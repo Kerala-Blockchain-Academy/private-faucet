@@ -68,6 +68,7 @@ export default function FaucetInput() {
 
     BDhandleClose();
     SBhandleOpen();
+    setEthAddress("");
   };
 
   return (
@@ -115,7 +116,7 @@ export default function FaucetInput() {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <Snackbar open={SBopen} autoHideDuration={6000} onClose={SBhandleClose}>
+      <Snackbar open={SBopen} autoHideDuration={3000} onClose={SBhandleClose}>
         <Alert onClose={SBhandleClose} severity="success" sx={{ width: '100%' }}>
           Account Funded with Test Ether
         </Alert>
