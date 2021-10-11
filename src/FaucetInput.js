@@ -3,10 +3,37 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+import MuiAlert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+
 import { useState } from "react";
 const { ethers } = require("ethers");
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export default function FaucetInput() {
+  const [BDopen, BDsetOpen] = React.useState(false);
+  const BDhandleClose = () => {
+    BDsetOpen(false);
+  };
+  const BDhandleOpen = () => {
+    BDsetOpen(true);
+  };
+
+  const [SBopen, SBsetOpen] = React.useState(false);
+
+  const SBhandleOpen = () => {
+    SBsetOpen(true);
+  };
+
+  const SBhandleClose = (event, reason) => {
+    SBsetOpen(false);
+  };
+
   const [ethAddress, setEthAddress] = useState("");
 
   const addressChangeHandler = (event) => {
@@ -14,41 +41,33 @@ export default function FaucetInput() {
   };
 
   const submitHandler = async (event) => {
-    const provider = new ethers.providers.JsonRpcProvider("http://ab9d-202-88-234-181.ngrok.io");
+    BDhandleOpen();
 
-    const mnemonic = "liberty fade indoor way jazz tonight symbol error super loud earth allow";
+    const provider = new ethers.providers.JsonRpcProvider(
+      "http://ab9d-202-88-234-181.ngrok.io"
+    );
+
+    const mnemonic =
+      "liberty fade indoor way jazz tonight symbol error super loud earth allow";
     const walletMnemonic = ethers.Wallet.fromMnemonic(mnemonic);
 
-    console.log(await walletMnemonic.getAddress());
-
-    console.log("Build Tx")
     const tx = {
       to: ethAddress,
       value: ethers.utils.parseEther("1.0"),
     };
-    console.log("Tx Obj: ", tx)
-
-    console.log("Sign Tx")
 
     // Signing a transaction
     await walletMnemonic.signTransaction(tx);
-
-    console.log("Connect to Chain")
-
 
     // The connect method returns a new instance of the
     // Wallet connected to a provider
     const wallet = walletMnemonic.connect(provider);
 
-    console.log("Connection Obj: ", wallet)
-
-
-    console.log("Send Tx")
-
     // Sending ether
-    console.log(await wallet.sendTransaction(tx));
+    await wallet.sendTransaction(tx);
 
-    console.log("Done")
+    BDhandleClose();
+    SBhandleOpen();
   };
 
   return (
@@ -72,13 +91,14 @@ export default function FaucetInput() {
         fullWidth
         onChange={addressChangeHandler}
         id="fullWidth"
+        value={ethAddress}
         autoFocus
         helperText="Please enter your ethereum account addres eg: 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"
       />
 
       <br />
       <br />
-      <Button variant="contained" onClick={submitHandler}>
+      <Button id="submitButton" variant="contained" onClick={submitHandler}>
         <b>Request Ether</b>
       </Button>
 
@@ -89,6 +109,17 @@ export default function FaucetInput() {
       <Typography variant="subtitle2" component="div" gutterBottom>
         <b>Developed and maintained by Distributed Labs</b>
       </Typography>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={BDopen}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      <Snackbar open={SBopen} autoHideDuration={6000} onClose={SBhandleClose}>
+        <Alert onClose={SBhandleClose} severity="success" sx={{ width: '100%' }}>
+          Account Funded with Test Ether
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
