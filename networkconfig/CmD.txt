@@ -1,0 +1,18 @@
+Ngrock
+--------------
+./ngrok authtoken 1zAhPBcpaPR3hevyYVFt9rXP3gu_7sW7efdLFHgUyT2qysEXD
+./ngrok http 80
+
+
+Geth
+----------------------
+
+
+geth --identity "KBA" --networkid "5777" --datadir "data" --http --http.addr "0.0.0.0" --http.port "8545" --http.corsdomain "*" --http.api "miner,eth,net,web3,personal" --allow-insecure-unlock --nodiscover --miner.etherbase "0x71D05C5737B4c97FB3C902fdd71E0307F62ED8fb" --http.vhosts "*"
+
+
+
+MetaMask
+-----------
+Seed: father toward sunset junk shell region draft bitter patient trouble entire alcohol
+seed: liberty fade indoor way jazz tonight symbol error super loud earth allow
