@@ -44,7 +44,7 @@ export default function FaucetInput() {
     BDhandleOpen();
 
     const provider = new ethers.providers.JsonRpcProvider(
-      "http://ab9d-202-88-234-181.ngrok.io"
+      "https://f4fc-202-88-234-181.ngrok.io"
     );
 
     const mnemonic =
