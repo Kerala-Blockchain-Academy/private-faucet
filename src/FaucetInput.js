@@ -47,9 +47,13 @@ export default function FaucetInput() {
       "https://f4fc-202-88-234-181.ngrok.io"
     );
 
-    const mnemonic =
-      "liberty fade indoor way jazz tonight symbol error super loud earth allow";
-    const walletMnemonic = ethers.Wallet.fromMnemonic(mnemonic);
+    // When using seed //
+    // const mnemonic =
+    //   "liberty fade indoor way jazz tonight symbol error super loud earth allow";
+    // const walletAddress = ethers.Wallet.fromMnemonic(mnemonic);
+
+    const keystore = require('./keyfile/UTC--2022-03-01T17-15-18.508358800Z--a9c229f4674de0d1fa53565f5ff4c5988c9fae49');
+    const walletAddress = await ethers.Wallet.fromEncryptedJson(keystore);
 
     const tx = {
       to: ethAddress,
@@ -57,11 +61,11 @@ export default function FaucetInput() {
     };
 
     // Signing a transaction
-    await walletMnemonic.signTransaction(tx);
+    await walletAddress.signTransaction(tx);
 
     // The connect method returns a new instance of the
     // Wallet connected to a provider
-    const wallet = walletMnemonic.connect(provider);
+    const wallet = walletAddress.connect(provider);
 
     // Sending ether
     await wallet.sendTransaction(tx);
@@ -108,7 +112,7 @@ export default function FaucetInput() {
       <br />
       <br />
       <Typography variant="subtitle2" component="div" gutterBottom>
-        <b>Developed and maintained by Distributed Labs</b>
+        <b>Developed and maintained by Decentralized Labs</b>
       </Typography>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -117,7 +121,11 @@ export default function FaucetInput() {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Snackbar open={SBopen} autoHideDuration={3000} onClose={SBhandleClose}>
-        <Alert onClose={SBhandleClose} severity="success" sx={{ width: '100%' }}>
+        <Alert
+          onClose={SBhandleClose}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
           Account Funded with Test Ether
         </Alert>
       </Snackbar>
