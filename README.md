@@ -1,6 +1,18 @@
-# Ethereum-faucet
+# Ethereum Faucet
 
 A simple ethereum facucet application for Private Networks.  
+
+## Prerequisites
+
+ - NodeJS 16.x
+ 
+ ## 🛠 Build using
+<a href="https://nodejs.org/en/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/ananthanir/HelloWorldV2/adc428d165e8188f82000c83d2742649bbc2087d/assets/nodejs-colored.svg" width="36" height="36" alt="NodeJS" /></a>
+<a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/ananthanir/HelloWorldV2/adc428d165e8188f82000c83d2742649bbc2087d/assets/react-colored.svg" width="36" height="36" alt="React" /></a>
+<a href="https://ethers.io" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/ananthanir/HelloWorldV2/adc428d165e8188f82000c83d2742649bbc2087d/assets/ethers-colored.svg" width="36" height="36" alt="Ethers" /></a>
+<a href="https://ethereum.org/en/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/ananthanir/HelloWorldV2/adc428d165e8188f82000c83d2742649bbc2087d/assets/ethereum-colored.svg" width="36" height="36" alt="Ethereum" /></a>
+ 
+ ## ⚙️ Setting up
 
 The application uses [Ether.js](https://docs.ethers.io/v5/) to sign and send ether to the requesting address. The funding acount for the faucet is set as the etherbase account for the miner node in the private network.  
 
