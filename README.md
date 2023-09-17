@@ -1,4 +1,4 @@
-# Private Faucet
+# 🚰 Private Faucet
 
 Meet the **Private Faucet**, a feather-light faucet tailored for EVM-based private networks. Boasting an incredibly streamlined design, it stands as an ideal choice for individuals seeking an efficient, less demanding resource solution. Provided users are equipped with access to the RPC APIs and a private key linked to a funded account, the faucet can be utilized with utmost ease. At the heart of this creation lies the ambition to offer a straightforward tool that can effortlessly fund addresses interacting with the private network, enhancing user experience and simplicity.
 
