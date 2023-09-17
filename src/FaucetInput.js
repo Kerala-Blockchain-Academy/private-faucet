@@ -54,13 +54,15 @@ export default function FaucetInput() {
 
     BDhandleOpen();
 
+    console.log(process.env.REACT_APP_NODE_RPC_URL)
+    console.log(process.env.REACT_APP_FAUCET_ADDRESS_PRIVATE_KEY)
+
     try {
       const provider = new ethers.providers.JsonRpcProvider(
-        "Node_RPC_URL"
+        process.env.REACT_APP_NODE_RPC_URL
       );
       
-      // private key for facuet address
-      const walletAddress = new ethers.Wallet("funding_address_private_key");
+      const walletAddress = new ethers.Wallet(process.env.REACT_APP_FAUCET_ADDRESS_PRIVATE_KEY);
 
       const tx = {
         to: ethAddress,
