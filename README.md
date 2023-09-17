@@ -30,10 +30,10 @@ npm install
 ```
 
 To connect to any EVM-compatible blockchain network, update the **REACT_APP_NODE_RPC_URL** value in the **.env** file.
-https://github.com/ananthanir/private-faucet/blob/f1b51e75248ef8e115cf43407bd30b5d612c2a14/.env#L1
+https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/1c1f144eef66719b5ddbbfbbb4a3bb9cf7ed1988/.env#L1
 
 Next the private key to the funding address, update the **REACT_APP_FAUCET_ADDRESS_PRIVATE_KEY** value in the **.env** file.
-https://github.com/ananthanir/private-faucet/blob/f1b51e75248ef8e115cf43407bd30b5d612c2a14/.env#L2
+https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/1c1f144eef66719b5ddbbfbbb4a3bb9cf7ed1988/.env#L2
 
 Run the application
 
@@ -60,4 +60,4 @@ Should you have ideas to enhance this, kindly fork the repository and initiate a
 5. Open a Pull Request
 
 ## 📜 License
-This project is licensed under the MIT license - see the [LICENSE.md](https://github.com/ananthanir/private-faucet/blob/main/LICENSE) file for details.
+This project is licensed under the MIT license - see the [LICENSE.md](https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/main/LICENSE) file for details.
