@@ -30,10 +30,16 @@ npm install
 ```
 
 To connect to any EVM-compatible blockchain network, update the **REACT_APP_NODE_RPC_URL** value in the **.env** file.
-https://github.com/ananthanir/private-faucet/blob/a7136ff54522b542c8541f67eca7521c02412730/.env#L1
+https://github.com/ananthanir/private-faucet/blob/f1b51e75248ef8e115cf43407bd30b5d612c2a14/.env#L1
 
 Next the private key to the funding address, update the **REACT_APP_FAUCET_ADDRESS_PRIVATE_KEY** value in the **.env** file.
-https://github.com/ananthanir/private-faucet/blob/a7136ff54522b542c8541f67eca7521c02412730/.env#L2
+https://github.com/ananthanir/private-faucet/blob/f1b51e75248ef8e115cf43407bd30b5d612c2a14/.env#L2
+
+Run the application
+
+```bash
+npm start
+```
 
 ## 🐳 Docker
 
