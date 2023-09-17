@@ -25,13 +25,22 @@ export default function FaucetInput() {
   };
 
   const [SBopen, SBsetOpen] = React.useState(false);
+  const [FBopen, FBsetOpen] = React.useState(false);
 
   const SBhandleOpen = () => {
     SBsetOpen(true);
   };
 
+  const FBhandleOpen = () => {
+    FBsetOpen(true);
+  };
+
   const SBhandleClose = (event, reason) => {
     SBsetOpen(false);
+  };
+
+  const FBhandleClose = (event, reason) => {
+    FBsetOpen(false);
   };
 
   const [ethAddress, setEthAddress] = useState("");
@@ -41,38 +50,42 @@ export default function FaucetInput() {
   };
 
   const submitHandler = async (event) => {
+    event.preventDefault();
+
     BDhandleOpen();
 
-    const provider = new ethers.providers.JsonRpcProvider(
-      "https://f4fc-202-88-234-181.ngrok.io"
-    );
+    try {
+      const provider = new ethers.providers.JsonRpcProvider(
+        "http://127.0.0.1:8545"
+      );
+      
+      // private key for facuet address
+      const walletAddress = new ethers.Wallet("0x8b58141556e4a7d18b4af1d111ff991168063f4859b243131a10cb1f1ee7c1ef");
 
-    // When using seed //
-    // const mnemonic =
-    //   "liberty fade indoor way jazz tonight symbol error super loud earth allow";
-    // const walletAddress = ethers.Wallet.fromMnemonic(mnemonic);
+      const tx = {
+        to: ethAddress,
+        value: ethers.utils.parseEther("1.0"),
+      };
 
-    const keystore = require('./keyfile/UTC--2022-03-01T17-15-18.508358800Z--a9c229f4674de0d1fa53565f5ff4c5988c9fae49');
-    const walletAddress = await ethers.Wallet.fromEncryptedJson(keystore);
+      // Signing a transaction
+      await walletAddress.signTransaction(tx);
 
-    const tx = {
-      to: ethAddress,
-      value: ethers.utils.parseEther("1.0"),
-    };
+      // The connect method returns a new instance of the
+      // Wallet connected to a provider
+      const wallet = walletAddress.connect(provider);
 
-    // Signing a transaction
-    await walletAddress.signTransaction(tx);
+      // Sending ether
+      await wallet.sendTransaction(tx);
 
-    // The connect method returns a new instance of the
-    // Wallet connected to a provider
-    const wallet = walletAddress.connect(provider);
+      BDhandleClose();
+      SBhandleOpen();
+      setEthAddress("");
+    } catch (error) {
+      console.error(error)
+      BDhandleClose();
+      FBhandleOpen();
+    }
 
-    // Sending ether
-    await wallet.sendTransaction(tx);
-
-    BDhandleClose();
-    SBhandleOpen();
-    setEthAddress("");
   };
 
   return (
@@ -91,28 +104,29 @@ export default function FaucetInput() {
       <Typography variant="subtitle2" component="div" gutterBottom>
         <b>Your Ethereum wallet address</b>
       </Typography>
+      <form onSubmit={submitHandler}>
+        <TextField
+          fullWidth
+          onChange={addressChangeHandler}
+          id="fullWidth"
+          value={ethAddress}
+          autoFocus
+          helperText="Please enter your ethereum account addres eg: 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"
+          required
+        />
 
-      <TextField
-        fullWidth
-        onChange={addressChangeHandler}
-        id="fullWidth"
-        value={ethAddress}
-        autoFocus
-        helperText="Please enter your ethereum account addres eg: 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"
-      />
-
-      <br />
-      <br />
-      <Button id="submitButton" variant="contained" onClick={submitHandler}>
-        <b>Request Ether</b>
-      </Button>
-
+        <br />
+        <br />
+        <Button id="submitButton" type="submit" variant="contained">
+          <b>Request Ether</b>
+        </Button>
+      </form>
       <br />
       <br />
       <br />
       <br />
       <Typography variant="subtitle2" component="div" gutterBottom>
-        <b>Developed and maintained by Decentralized Labs</b>
+        Developed by  <b>Decentralized Labs</b>
       </Typography>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -127,6 +141,15 @@ export default function FaucetInput() {
           sx={{ width: "100%" }}
         >
           Account Funded with Test Ether
+        </Alert>
+      </Snackbar>
+      <Snackbar open={FBopen} autoHideDuration={3000} onClose={FBhandleClose}>
+        <Alert
+          onClose={FBhandleClose}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          Internal Error
         </Alert>
       </Snackbar>
     </Box>
