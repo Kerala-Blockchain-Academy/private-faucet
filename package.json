@@ -1,5 +1,5 @@
 {
-  "name": "ethereum-faucet",
+  "name": "private-faucet",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

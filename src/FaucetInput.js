@@ -100,11 +100,11 @@ export default function FaucetInput() {
       }}
     >
       <Typography variant="h4" component="div" gutterBottom>
-        <b>Ethereum Testnet Faucet</b>
+        <b>Private Testnet Faucet</b>
       </Typography>
 
       <Typography variant="subtitle2" component="div" gutterBottom>
-        <b>Your Ethereum wallet address</b>
+        <b>Your Wallet address</b>
       </Typography>
       <form onSubmit={submitHandler}>
         <TextField
