@@ -56,11 +56,11 @@ export default function FaucetInput() {
 
     try {
       const provider = new ethers.providers.JsonRpcProvider(
-        "http://127.0.0.1:8545"
+        "Node_RPC_URL"
       );
       
       // private key for facuet address
-      const walletAddress = new ethers.Wallet("0x8b58141556e4a7d18b4af1d111ff991168063f4859b243131a10cb1f1ee7c1ef");
+      const walletAddress = new ethers.Wallet("funding_address_private_key");
 
       const tx = {
         to: ethAddress,
