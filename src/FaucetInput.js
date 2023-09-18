@@ -63,10 +63,10 @@ export default function FaucetInput() {
       );
       
       const walletAddress = new ethers.Wallet(process.env.REACT_APP_FAUCET_ADDRESS_PRIVATE_KEY);
-
+      
       const tx = {
         to: ethAddress,
-        value: ethers.utils.parseEther("1.0"),
+        value: ethers.utils.parseEther(process.env.REACT_APP_PER_REQUEST_ETHER),
       };
 
       // Signing a transaction
