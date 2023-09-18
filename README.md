@@ -1,4 +1,4 @@
-# Private Faucet
+# 🚰 Private Faucet
 
 Meet the **Private Faucet**, a feather-light faucet tailored for EVM-based private networks. Boasting an incredibly streamlined design, it stands as an ideal choice for individuals seeking an efficient, less demanding resource solution. Provided users are equipped with access to the RPC APIs and a private key linked to a funded account, the faucet can be utilized with utmost ease. At the heart of this creation lies the ambition to offer a straightforward tool that can effortlessly fund addresses interacting with the private network, enhancing user experience and simplicity.
 
@@ -30,10 +30,16 @@ npm install
 ```
 
 To connect to any EVM-compatible blockchain network, update the **REACT_APP_NODE_RPC_URL** value in the **.env** file.
-https://github.com/ananthanir/private-faucet/blob/a7136ff54522b542c8541f67eca7521c02412730/.env#L1
+https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/1c1f144eef66719b5ddbbfbbb4a3bb9cf7ed1988/.env#L1
 
 Next the private key to the funding address, update the **REACT_APP_FAUCET_ADDRESS_PRIVATE_KEY** value in the **.env** file.
-https://github.com/ananthanir/private-faucet/blob/a7136ff54522b542c8541f67eca7521c02412730/.env#L2
+https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/1c1f144eef66719b5ddbbfbbb4a3bb9cf7ed1988/.env#L2
+
+Run the application
+
+```bash
+npm start
+```
 
 ## 🐳 Docker
 
@@ -54,4 +60,4 @@ Should you have ideas to enhance this, kindly fork the repository and initiate a
 5. Open a Pull Request
 
 ## 📜 License
-This project is licensed under the MIT license - see the [LICENSE.md](https://github.com/ananthanir/private-faucet/blob/main/LICENSE) file for details.
+This project is licensed under the MIT license - see the [LICENSE.md](https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/main/LICENSE) file for details.
