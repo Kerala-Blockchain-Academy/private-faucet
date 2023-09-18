@@ -30,10 +30,13 @@ npm install
 ```
 
 To connect to any EVM-compatible blockchain network, update the **REACT_APP_NODE_RPC_URL** value in the **.env** file.
-https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/1c1f144eef66719b5ddbbfbbb4a3bb9cf7ed1988/.env#L1
+https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/55c13736d46d834d27309cfc6a98439ae1403657/.env#L1
 
 Next the private key to the funding address, update the **REACT_APP_FAUCET_ADDRESS_PRIVATE_KEY** value in the **.env** file.
-https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/1c1f144eef66719b5ddbbfbbb4a3bb9cf7ed1988/.env#L2
+https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/55c13736d46d834d27309cfc6a98439ae1403657/.env#L2
+
+As for the per request ether value, update the **REACT_APP_PER_REQUEST_ETHER** value in the **.env** file.
+https://github.com/Kerala-Blockchain-Academy/private-faucet/blob/55c13736d46d834d27309cfc6a98439ae1403657/.env#L3
 
 Run the application
 
